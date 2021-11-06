@@ -12,7 +12,6 @@ using System.Security.Claims;
 namespace Bakery.Controllers
 {
 
-    [Authorize]
     public class TreatsController : Controller
     {
         private readonly BakeryContext _db;
@@ -30,11 +29,13 @@ namespace Bakery.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Treat treat)
         {
@@ -52,12 +53,14 @@ namespace Bakery.Controllers
             return View(thisTreat);
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
             return View(thisTreat);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(Treat treat)
         {
@@ -66,12 +69,14 @@ namespace Bakery.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
             return View(thisTreat);
         }
 
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
