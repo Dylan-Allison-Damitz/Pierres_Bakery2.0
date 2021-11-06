@@ -23,4 +23,3 @@ namespace Bakery.Controllers
             _db = db;
         }
     }
-}
