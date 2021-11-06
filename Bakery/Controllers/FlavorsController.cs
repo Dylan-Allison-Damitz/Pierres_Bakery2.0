@@ -81,5 +81,45 @@ namespace Bakery.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Delete(int id)
+        {
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            return View(thisFlavor);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            _db.Flavors.Remove(thisFlavor);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteTreat(int joinId)
+        {
+            var joinEntry = _db.TreatFlavor.FirstOrDefault(joinEntry => joinEntry.TreatFlavorId == joinId);
+            _db.TreatFlavor.Remove(joinEntry);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult AddTreat(int id)
+        {
+            var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+            ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+            return View(thisFlavor);
+        }
+
+        [HttpPost]
+        public ActionResult AddTreat(Flavor flavor, int TreatId)
+        {
+            if (TreatId !=0)
+            {
+                _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
+            }
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
