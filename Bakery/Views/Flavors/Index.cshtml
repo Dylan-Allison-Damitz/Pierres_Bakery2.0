@@ -5,7 +5,7 @@
 @using Bakery.Models;
 @model IEnumerable<Bakery.Models.Flavor>;
 
-<h1>Flavors for @User.Identity.Name</h1>
+<h1>Flavors for <strong>@User.Identity.Name</strong></h1>
 
 @if (@Model.Any())
 {

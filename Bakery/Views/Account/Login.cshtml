@@ -6,7 +6,7 @@
 
 @model LoginViewModel
 
-<h2>User Account Login:</h2>
+<h2><strong>User Account Login:</strong></h2>
 <h4>Uh Oh! Only logged in users can access Pierre's Flavors and Treats. Please sign in below.</h4>
 <hr />
 @using (Html.BeginForm())
@@ -19,6 +19,6 @@
 
     <input type="submit" value="Log in" class="btn btn-default" />
 
-    <p>Don't have an account? @Html.ActionLink("Register", "Register") here to start adding treats and flavors!</p>
+    <p>Don't have an account? <strong>@Html.ActionLink("Register", "Register")</strong> here to start adding treats and flavors!</p>
     <p>@Html.ActionLink("Home", "Index", "Home")</p>
 }
