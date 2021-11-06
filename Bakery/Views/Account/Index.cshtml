@@ -4,7 +4,8 @@
 
 @using System.Security.Claims
 
-<h2>Identity Authentication</h2>
+<h2>User Account Manager and Login</h2>
+<p>You are currently signed in as: <strong>@User.Identity.Name</strong></p>
 <hr />
 @if (User.Identity.IsAuthenticated)
     @using (Html.BeginForm("LogOff", "Account"))
